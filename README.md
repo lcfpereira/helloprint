@@ -1,2 +1,2 @@
-# helloprint
+# Helloprint
 PHP Challenge By Helloprint
