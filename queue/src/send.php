@@ -1,5 +1,6 @@
 <?php
-require_once __DIR__ . '/vendor/autoload.php';
+echo "works!"; 
+/*require_once __DIR__ . '/vendor/autoload.php';
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 use PhpAmqpLib\Message\AMQPMessage;
 $connection = new AMQPStreamConnection('localhost', 8080, 'guest', 'guest');
@@ -9,5 +10,5 @@ $msg = new AMQPMessage('Hello World!');
 $channel->basic_publish($msg, '', 'hello');
 echo " [x] Sent 'Hello World!'\n";
 $channel->close();
-$connection->close();
+$connection->close();*/
 ?>
