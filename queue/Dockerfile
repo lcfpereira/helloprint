@@ -1,5 +1,4 @@
-FROM tutum/apache-php
-RUN apt-get update && apt-get install -yq git && rm -rf /var/lib/apt/lists/*
-RUN rm -fr /app
-ADD . /src
+FROM nimmis/apache-php7
+ADD src /var/www/html/
+RUN cd  /var/www/html/
 RUN composer install
