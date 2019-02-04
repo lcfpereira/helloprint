@@ -12,8 +12,9 @@ PHP Challenge By Helloprint
 * 2.2. docker run -d -p 41061:22 -p 41062:80 DOCKERIMAGE
 
 3. On the backend folder execute:
-* 3.1. docker build ./
-* 3.2. docker run -d -p 4040:80 DOCKERIMAGE
+* 3.1. on folder src run composer install
+* 3.2. docker build ./
+* 3.3. docker run -d -p 4040:80 DOCKERIMAGE
 
 4. Open: http://localhost:4040/
 
