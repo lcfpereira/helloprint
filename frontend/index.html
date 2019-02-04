@@ -7,12 +7,29 @@
 function recoverPassword() {
     var xmlhttp = new XMLHttpRequest();
     var username = document.getElementById("username").value;
+    document.getElementById("message").innerHTML = "Loading...";
     xmlhttp.onreadystatechange = function() {
+        document.getElementById("message").style.display = 'block';
         if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("txtHint").innerHTML = this.responseText;
+            document.getElementById("message").innerHTML = this.responseText;
         }
     };
-    xmlhttp.open("GET", "http://localhost:41062/?username="+username, true);
+    xmlhttp.open("GET", "http://localhost:41062/?op=recover&username="+username, true);
+    xmlhttp.send();
+}
+
+function login() {
+    var xmlhttp = new XMLHttpRequest();
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+    document.getElementById("message").innerHTML = "Verifying your credentials...";
+    xmlhttp.onreadystatechange = function() {
+        document.getElementById("message").style.display = 'block';
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("message").innerHTML = this.responseText;
+        }
+    };
+    xmlhttp.open("GET", "http://localhost:41062/?op=login&username="+username+"&password="+password, true);
     xmlhttp.send();
 }
 </script>
@@ -23,17 +40,17 @@ function recoverPassword() {
             <div class="col-4">
                 <div class="card">
                     <div class="card-body">
-                        <form action="../backend/src/Login.php" autocomplete="off">
+                        <form>
                             <div class="form-group">
                                 <span><b>Username:</b></span><input type="text" class="form-control" name="username" id="username">
                             </div>
                             <div class="form-group">
-                                <span><b>Password:</b><input type="password" class="form-control" name="password">
+                                <span><b>Password:</b><input type="password" class="form-control" name="password" id="password">
                             </div>
-                            <button type="button" id="sendlogin" class="btn btn-primary">login</button>
+                            <button type="button" id="sendlogin" class="btn btn-primary" onclick="login()">Login</button>
                         </form>
                         <div><a href="#" onclick="recoverPassword();">Forgot Password?</a></div>
-                        <div id="txtHint">sfdsfdf</div>
+                        <div id="message" style="display:none;">Loading...</div>
                     </div>
                 </div>
             </div>

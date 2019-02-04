@@ -8,6 +8,11 @@ use PDO;
 class Init
 {
     Public function execute() {
+        $servername = 'localhost';
+        $user = 'root';
+        $pass = '';
+        $dbname = 'users';
+        
         $conn = new PDO('mysql:host=localhost;', $user, $pass);
 
         $conn->exec('CREATE DATABASE helloprint;');

@@ -21,7 +21,8 @@ class PhpMailerService {
             $mail->Username = 'helloprintchallenge@gmail.com';                 
             $mail->Password = 'wiwi_lp11';                          
             $mail->SMTPSecure = 'tls';                            
-            $mail->Port = 587;                                    
+            $mail->Port = 587;
+            $mail->SMTPDebug=0;                                    
         
             $mail->setFrom('helloprintchallenge@gmail.com', 'Helloprint Challenge');
             $mail->addAddress($to);   
@@ -30,10 +31,11 @@ class PhpMailerService {
             $mail->isHTML(true);                                  
             $mail->Subject = $subject;
             $mail->Body    = $body;
-            $mail->AltBody = $altBody;
+            //$mail->AltBody = $altBody;
         
             $mail->send();
-           return 'Email was sended!';
+
+           return true;
         } catch (Exception $e) {
             return 'Message could not be sent. Mailer Error: '. $mail->ErrorInfo;
         }    

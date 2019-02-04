@@ -13,6 +13,10 @@ class RecoverPassword {
     public function recover($username){
         $userData = $this->getPassword($username);
 
+        if ($userData === false){
+            return "This user is not registered!";
+        }
+
         $emailBody = $this->bodyEmail($username, $userData);
 
         $emailAltBody = $this->altBodyEmail($username, $userData);
@@ -20,6 +24,11 @@ class RecoverPassword {
         $phpMailer = new PhpMailerService();
 
         $result = $phpMailer->sendEmail($userData['email'], 'Recover Password', $emailBody, $emailAltBody);
+
+        if ($result === true){
+
+            return "Email sended!";
+        }
 
         return $result;
     }
@@ -41,9 +50,9 @@ class RecoverPassword {
             $q->setFetchMode(PDO::FETCH_ASSOC);
             
             // print out the result set
-            while ($r = $q->fetch()) {
-                return $r;
-            }
+            $r = $q->fetch();
+
+            return $r;
 
         }
         catch(PDOException $e) {
