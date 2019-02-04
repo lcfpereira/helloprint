@@ -29,7 +29,7 @@ class RecoverPassword {
 
         if ($result === true){
 
-            return "Email sended!";
+            return "Email sent!";
         }
 
         return $result;
