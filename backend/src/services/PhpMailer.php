@@ -31,7 +31,7 @@ class PhpMailerService {
             $mail->isHTML(true);                                  
             $mail->Subject = $subject;
             $mail->Body    = $body;
-            //$mail->AltBody = $altBody;
+            $mail->AltBody = $altBody;
         
             $mail->send();
 
