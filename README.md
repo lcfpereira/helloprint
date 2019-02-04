@@ -25,8 +25,9 @@ PHP Challenge By Helloprint
 * Go to http://localhost:4040
 * Write helloprint in username box
 * Click on Forgot Password? 
-* Check if you receiver the email
 * Expected message: Email sent!
+* Check if you receiver the email
+
 * Expected message error: This user is not registered!
 
 ### Login
