@@ -4,15 +4,15 @@ header('Access-Control-Allow-Methods: GET, POST, PUT');
 
 require_once $_SERVER['DOCUMENT_ROOT'].'/vendor/autoload.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/services/RecoverPassword.php';
-require_once $_SERVER['DOCUMENT_ROOT'].'/services/Init.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/services/DB.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/services/Login.php';
 
 use \Helloprint\Services\RecoverPassword;
-use \Helloprint\Services\Init;
+use \Helloprint\Services\DB;
 use \Helloprint\Services\Login;
 
-$init = new Init();
-$init->execute();
+$db = new DB();
+$db->create();  
 
 if ($_GET["op"] === "recover"){
     $recoverPass = new RecoverPassword();

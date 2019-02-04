@@ -1,4 +1,4 @@
 
-vendor/
-
-composer\.lock
+backend/vendor
+frontend/vendor
+queue/vender

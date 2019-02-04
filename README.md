@@ -1,10 +1,26 @@
 # Helloprint
 PHP Challenge By Helloprint
 #### Steps to install this app:
-1. Install xampp
+1. Install Docker CE -> URL: https://docs.docker.com/install/
 
-2. Download app to htdocs inside xampp folder on your root folder
+2. Install Git to get repository
 
-3. Execute control panel and start Apache
+3. After clone repository in your command line go to backend folder
 
-4. Access to http://localhost/helloprint/fe/
+4. Run composer install
+
+5. Execute: 
+    * docker build ./
+    * docker run -d -p 41061:22 -p 41062:80 <Name of the image>
+
+6. Go to frontend folder in your command line
+
+7. After execute:
+    * docker build./
+    * docker run -d -p 4040:80 <Name of the image>
+
+8. In your browser open http://localhost:4040/
+
+9. To kill the dockers execute
+    * docker ps
+    * docker kill <Images Id>
