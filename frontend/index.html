@@ -12,7 +12,7 @@ function recoverPassword() {
             document.getElementById("txtHint").innerHTML = this.responseText;
         }
     };
-    xmlhttp.open("GET", "localhost:8080/send.php?op=recover&username=" + username, true);
+    xmlhttp.open("GET", "http://localhost:41062/?username="+username, true);
     xmlhttp.send();
 }
 </script>
@@ -33,7 +33,7 @@ function recoverPassword() {
                             <button type="button" id="sendlogin" class="btn btn-primary">login</button>
                         </form>
                         <div><a href="#" onclick="recoverPassword();">Forgot Password?</a></div>
-                        <div id="txtHint"></div>
+                        <div id="txtHint">sfdsfdf</div>
                     </div>
                 </div>
             </div>

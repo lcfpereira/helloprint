@@ -1,8 +1,8 @@
 <?php
-namespace Helloprint\Services\PhpMailer;
+namespace Helloprint\Services;
 
 //Load Composer's autoloader
-require_once $_SERVER['DOCUMENT_ROOT'].'/helloprint/vendor/autoload.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/vendor/autoload.php';
 
 // Import PHPMailer classes into the global namespace
 // These must be at the top of your script, not inside a function
@@ -10,7 +10,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 class PhpMailerService {
-    public function sendEmail($from, $subject, $body, $altBody){
+    public function sendEmail($to, $subject, $body, $altBody){
         try {
             $mail = new PHPMailer(true);                           
 
@@ -24,7 +24,7 @@ class PhpMailerService {
             $mail->Port = 587;                                    
         
             $mail->setFrom('helloprintchallenge@gmail.com', 'Helloprint Challenge');
-            $mail->addAddress($from);   
+            $mail->addAddress($to);   
 
         
             $mail->isHTML(true);                                  

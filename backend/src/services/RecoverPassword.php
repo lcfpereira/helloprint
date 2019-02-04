@@ -1,11 +1,12 @@
 <?php 
 
-namespace Helloprint\Services\RecoverPassword;
+namespace Helloprint\Services;
 
-require $_SERVER['DOCUMENT_ROOT'].'/helloprint/vendor/autoload.php';
-require $_SERVER['DOCUMENT_ROOT'].'/helloprint/backend/src/PhpMailer.php';
+require $_SERVER['DOCUMENT_ROOT'].'/vendor/autoload.php';
+require $_SERVER['DOCUMENT_ROOT'].'/services/PhpMailer.php';
 
-use Helloprint\Services\PhpMailer;
+use Helloprint\Services\PhpMailerService;
+use PDO;
 
 class RecoverPassword {
 
@@ -16,29 +17,34 @@ class RecoverPassword {
 
         $emailAltBody = $this->altBodyEmail($username, $userData);
 
-        $phpMailer = new PhpMailer();
+        $phpMailer = new PhpMailerService();
 
-        $result = $phpMailer->sendEmail($from, 'Recover Password', $emailBody, $emailAltBody);
+        $result = $phpMailer->sendEmail($userData['email'], 'Recover Password', $emailBody, $emailAltBody);
 
         return $result;
     }
 
     protected function getPassword($username){
         $servername = 'localhost';
-        $username = 'root';
-        $password = '';
+        $user = 'root';
+        $pass = '';
         $dbname = 'users';
 
         try {
-            $conn = new PDO('mysql:host=$servername;dbname=$dbname', $username, $password);
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $stmt = $conn->prepare('SELECT password, email FROM users WHERE username = $username'); 
-            $stmt->execute();
+            $conn = new PDO('mysql:host=localhost;', $user, $pass);
 
-            $result = $stmt->setFetchMode(PDO::FETCH_ASSOC); 
-            foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) { 
-                return $v;
+            $q = $conn->prepare("SELECT password, email FROM `helloprint`.`users` WHERE username = :username");
+            
+            // pass values to the query and execute it
+            $q->execute([':username' => $username]);
+            
+            $q->setFetchMode(PDO::FETCH_ASSOC);
+            
+            // print out the result set
+            while ($r = $q->fetch()) {
+                return $r;
             }
+
         }
         catch(PDOException $e) {
             echo 'Error: ' . $e->getMessage();
@@ -47,11 +53,11 @@ class RecoverPassword {
     }
 
     private function bodyEmail($username, $userData){
-        return 'Hello $username,</br> you password is '.$userData['password'] . ' </br> Best regards, HelloPrint</br>';
+        return 'Hi '.$username.',</br> you password is '.$userData['password'] . ' </br> Best regards, HelloPrint</br>';
     } 
 
     private function altBodyEmail($username, $userData){
-        return 'Hello $username, you password is '.$userData['password'] . ' Best regards, HelloPrint';
+        return 'Hi '.$username.', you password is '.$userData['password'] . ' Best regards, HelloPrint';
     } 
 }
 
