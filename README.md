@@ -11,16 +11,16 @@ PHP Challenge By Helloprint
 
 5. Execute: 
     * docker build ./
-    * docker run -d -p 41061:22 -p 41062:80 <Name of the image>
+    * docker run -d -p 41061:22 -p 41062:80 DOCKERIMAGE
 
 6. Go to frontend folder in your command line
 
 7. After execute:
     * docker build./
-    * docker run -d -p 4040:80 <Name of the image>
+    * docker run -d -p 4040:80 DOCKERIMAGE
 
 8. In your browser open http://localhost:4040/
 
 9. To kill the dockers execute
     * docker ps
-    * docker kill <Images Id>
+    * docker kill CONTAINERID
