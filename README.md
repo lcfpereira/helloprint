@@ -17,15 +17,12 @@ PHP Challenge By Helloprint
 * 3.2. docker build ./
 * 3.3. docker run -d -p 4040:80 DOCKERIMAGE -> replace DOCKERIMAGE for the string next Successfully built
 
-4. Open: http://localhost:4040/
-
-
 # Testing
 
 ### Recover password 
 * Go to mailinator.com  
 * Create email helloprint@mailinator.com 
-* Go to http://localhost4040
+* Go to http://localhost:4040
 * Write helloprint in username box
 * Click on Forgot Password? 
 * Check if you receiver the email
