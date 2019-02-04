@@ -1,4 +1,1 @@
-
-backend/vendor
-frontend/vendor
-queue/vender
+/backend/src/vendor
