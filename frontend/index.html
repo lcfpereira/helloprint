@@ -12,10 +12,12 @@ function recoverPassword() {
         document.getElementById("message").style.display = 'block';
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("message").innerHTML = this.responseText;
-        }
+        }   
+        
     };
-    xmlhttp.open("GET", "http://localhost:41062/?op=recover&username="+username, true);
-    xmlhttp.send();
+    xmlhttp.open("GET", "http://localhost:2020", true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send("op=login&username="+username);
 }
 
 function login() {
@@ -29,8 +31,9 @@ function login() {
             document.getElementById("message").innerHTML = this.responseText;
         }
     };
-    xmlhttp.open("GET", "http://localhost:41062/?op=login&username="+username+"&password="+password, true);
-    xmlhttp.send();
+    xmlhttp.open("POST", "http://localhost:2020", true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send("op=login&username="+username+"&password="+password);
 }
 </script>
 
