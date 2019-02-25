@@ -8,14 +8,24 @@ PHP Challenge By Helloprint
 # Running the App
 
 1. Clone the repo
-2. On the frontend folder execute:
-* 2.1. docker build ./
-* 2.2. docker run -d -p 41061:22 -p 41062:80 DOCKERIMAGE -> replace DOCKERIMAGE for the string next Successfully built
 
-3. On the backend folder execute:
+2. Start Rabbit Server
+* docker run -d --hostname my-rabbit --name some-rabbit -p 5672:5672 -p 15672:15672 rabbitmq:3-management
+
+3. On the broker folder execute:
 * 3.1. on folder src run "composer install"
-* 3.2. docker build ./
-* 3.3. docker run -d -p 4040:80 DOCKERIMAGE -> replace DOCKERIMAGE for the string next Successfully built
+* 3.2. docker build ./ 
+* 3.3. docker run -d -p 2020:80 DOCKERIMAGE -> replace DOCKERIMAGE for the string next Successfully built
+
+4. On the frontend folder execute:
+* 4.1. docker build ./
+* 4.2. docker run -d -p 4040:80 DOCKERIMAGE -> replace DOCKERIMAGE for the string next Successfully built
+
+4. On the backend folder execute:
+* 4.1. on folder src run "composer install"
+* 4.2. docker build ./
+* 4.3. docker run -d -p 6060:80 DOCKERIMAGE -> replace DOCKERIMAGE for the string next Successfully built
+* 4.4. on commmand line execute: curl localhost:6060
 
 # Testing
 
