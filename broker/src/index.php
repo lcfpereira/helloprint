@@ -1,23 +1,21 @@
 <?php
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, POST, PUT');
+
 require_once __DIR__ . '/vendor/autoload.php';
-use PhpAmqpLib\Connection\AMQPStreamConnection;
+require_once $_SERVER['DOCUMENT_ROOT'].'/broker.php';
 
-$connection = new AMQPStreamConnection('172.17.0.2', 5672, 'guest', 'guest');
-$channel = $connection->channel();
-$channel->queue_declare('hello', false, false, false, false);
 
-echo " [*] Waiting for messages. To exit press CTRL+C\n";
+use Helloprint\Broker\FibonacciRpcClient;
+use function GuzzleHttp\json_encode;
 
-$callback = function ($msg) {
-    echo ' [x] Received ', $msg->body, "\n";
-};
 
-$channel->basic_consume('hello', '', false, true, false, false, $callback);
+$data = ["op" => $_POST['op'], "username" => $_POST['username']];
 
-while (count($channel->callbacks)) {
-    $channel->wait();
+if (!empty($_POST['password'])){
+    $data["password"] =  $_POST['password'];
 }
 
-$channel->close();
-$connection->close();
-?>
+$fibonacci_rpc = new FibonacciRpcClient();
+$response = $fibonacci_rpc->call(json_encode($data));
+echo $response;

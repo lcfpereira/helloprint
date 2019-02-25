@@ -15,9 +15,9 @@ function recoverPassword() {
         }   
         
     };
-    xmlhttp.open("GET", "http://localhost:2020", true);
+    xmlhttp.open("POST", "http://localhost:2020", true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xmlhttp.send("op=login&username="+username);
+    xmlhttp.send("op=recover&username="+username);
 }
 
 function login() {
