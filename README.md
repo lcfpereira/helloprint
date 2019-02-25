@@ -21,11 +21,11 @@ PHP Challenge By Helloprint
 * 4.1. docker build ./
 * 4.2. docker run -d -p 4040:80 DOCKERIMAGE -> replace DOCKERIMAGE for the string next Successfully built
 
-4. On the backend folder execute:
-* 4.1. on folder src run "composer install"
-* 4.2. docker build ./
-* 4.3. docker run -d -p 6060:80 DOCKERIMAGE -> replace DOCKERIMAGE for the string next Successfully built
-* 4.4. on commmand line execute: curl localhost:6060
+5. On the backend folder execute:
+* 5.1. on folder src run "composer install"
+* 5.2. docker build ./
+* 5.3. docker run -d -p 6060:80 DOCKERIMAGE -> replace DOCKERIMAGE for the string next Successfully built
+* 5.4. on commmand line execute: curl localhost:6060
 
 # Testing
 
