@@ -1,3 +1,3 @@
 FROM tomsik68/xampp
  
-ADD src /opt/lampp/htdocs/
+COPY src/. /opt/lampp/htdocs/

@@ -1,26 +1,40 @@
 # Helloprint
 PHP Challenge By Helloprint
-#### Steps to install this app:
-1. Install Docker CE -> URL: https://docs.docker.com/install/
+# Requirements
+	- Docker
+	- Git
+    - Composer
 
-2. Install Git to get repository
+# Running the App
 
-3. After clone repository in your command line go to backend folder
+1. Clone the repo
+2. On the frontend folder execute:
+* 2.1. docker build ./
+* 2.2. docker run -d -p 41061:22 -p 41062:80 DOCKERIMAGE -> replace DOCKERIMAGE for the string next Successfully built
 
-4. Run composer install
+3. On the backend folder execute:
+* 3.1. on folder src run "composer install"
+* 3.2. docker build ./
+* 3.3. docker run -d -p 4040:80 DOCKERIMAGE -> replace DOCKERIMAGE for the string next Successfully built
 
-5. Execute: 
-    * docker build ./
-    * docker run -d -p 41061:22 -p 41062:80 DOCKERIMAGE
+# Testing
 
-6. Go to frontend folder in your command line
+### Recover password 
+* Go to mailinator.com  
+* Create email helloprint@mailinator.com 
+* Go to http://localhost:4040
+* Write helloprint in username box
+* Click on Forgot Password? 
+* Expected message: Email sent!
+* Check if you receiver the email
 
-7. After execute:
-    * docker build./
-    * docker run -d -p 4040:80 DOCKERIMAGE
+* Expected message error: This user is not registered!
 
-8. In your browser open http://localhost:4040/
+### Login
+* Enter helloprint on username box
+* Enter P@ssw0rd! on password box
+* Click on Login
+* Expected message: Login successful!
+* Expected message error: Invalid credentials!
 
-9. To kill the dockers execute
-    * docker ps
-    * docker kill CONTAINERID
+

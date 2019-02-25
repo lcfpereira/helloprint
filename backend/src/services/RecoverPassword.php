@@ -29,14 +29,14 @@ class RecoverPassword {
 
         if ($result === true){
 
-            return "Email sended!";
+            return "Email sent!";
         }
 
         return $result;
     }
 
     private function bodyEmail($username, $userData){
-        return 'Hi '.$username.',</br> you password is '.$userData['password'] . ' </br> Best regards, HelloPrint</br>';
+        return '<p>Hi '.$username.',</p> <p>you password is '.$userData['password'] . '</p> <p>Best regards,</p> <p>HelloPrint</p>';
     } 
 
     private function altBodyEmail($username, $userData){
